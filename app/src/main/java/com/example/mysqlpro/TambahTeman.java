@@ -1,5 +1,6 @@
 package com.example.mysqlpro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.JsonReader;
 import android.util.Log;
@@ -46,6 +47,10 @@ public class TambahTeman extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SimpanData();
+                Intent inten = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(inten);
+                finish();
+
             }
         });
     }
@@ -67,7 +72,8 @@ public class TambahTeman extends AppCompatActivity {
                     Log.d(TAG, "Response : " + response.toString());
 
                     try {
-                        JSONObject jObj = new JSONObject(response);
+                        JSONObject jObj;
+                        jObj = new JSONObject(response);
 
                         success = jObj.getInt(TAG_SUCCESS);
                         if (success == 1) {
